@@ -108,7 +108,19 @@ const updadeUserPassword = function() {
 
 const updateUsername = function() {
     // update username
-    return User.findOneAndUpdate({ username: 'Benny_the_boy' }, { username: 'Benny_the_man' }, { new: true }, function(err, user) {
+    return User.findOne({ username: 'Benny_the_boy' })
+        .then(function(user) {
+            
+            console.log('Name ' + user.name);
+            user.username = 'Benny_the_man';
+            console.log('New name is ' + user.username);
+            return user.save(function(err) {
+                if (err) throw err;
+
+                console.log('Uzytkownik ' + user.name + ' zostal pomyslnie zaktualizowany');
+            })
+        })
+    return User.findOne({ username: 'Benny_the_boy' }, { username: 'Benny_the_man' }, { new: true }, function(err, user) {
         if (err) throw err;
 
         console.log('Nazwa uzytkownika po aktualizacji to ' + user.username);
