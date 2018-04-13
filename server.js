@@ -120,11 +120,9 @@ const updateUsername = function() {
                 console.log('Uzytkownik ' + user.name + ' zostal pomyslnie zaktualizowany');
             })
         })
-    return User.findOne({ username: 'Benny_the_boy' }, { username: 'Benny_the_man' }, { new: true }, function(err, user) {
-        if (err) throw err;
-
+    
         console.log('Nazwa uzytkownika po aktualizacji to ' + user.username);
-    })
+    
 }
 
 const findMarkAndDelete = function() {
